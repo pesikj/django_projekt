@@ -45,3 +45,4 @@ class Opportunity(models.Model):
     primary_contact = models.ForeignKey(Contact, on_delete=models.SET_NULL, null=True)
     description = models.TextField(null=True, blank=True)
     status = models.CharField(max_length=2, default="1", choices=status_choices)
+    value = models.DecimalField(max_digits=10, decimal_places=2, null=True)
