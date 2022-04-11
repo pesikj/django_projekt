@@ -1,6 +1,11 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+def get_name(self):
+    return f"{self.first_name} {self.last_name}"
+
+User.add_to_class("__str__", get_name)
+
 class Address(models.Model):
     street = models.CharField(max_length=200, blank=True, null=True)
     zip_code = models.CharField(max_length=10, blank=True, null=True)
@@ -45,3 +50,4 @@ class Opportunity(models.Model):
     primary_contact = models.ForeignKey(Contact, on_delete=models.SET_NULL, null=True)
     description = models.TextField(null=True, blank=True)
     status = models.CharField(max_length=2, default="1", choices=status_choices)
+    value = models.DecimalField(max_digits=10, decimal_places=2, null=True)
