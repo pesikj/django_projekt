@@ -1,10 +1,10 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-def get_name(self):
-    return f"{self.first_name} {self.last_name}"
-
-User.add_to_class("__str__", get_name)
+# def get_name(self):
+#     return f"{self.first_name} {self.last_name}"
+#
+# User.add_to_class("__str__", get_name)
 
 class Address(models.Model):
     street = models.CharField(max_length=200, blank=True, null=True)

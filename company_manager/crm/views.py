@@ -29,6 +29,13 @@ class OpportunityUpdateView(PermissionRequiredMixin, UpdateView):
     template_name = "opportunity/update_opportunity.html"
     fields = ["company", "sales_manager", "description", "status", "value"]
     success_url = reverse_lazy("index")
+
+class OpportunityUpdateView(PermissionRequiredMixin, UpdateView):
+    permission_required = "crm.change_opportunity"
+    model = models.Opportunity
+    template_name = "opportunity/update_opportunity.html"
+    fields = ["company", "sales_manager", "description", "status", "value"]
+    success_url = reverse_lazy("index")
 from django.contrib.messages.views import SuccessMessageMixin
 class EmployeeUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     fields = ["department"]
