@@ -18,6 +18,11 @@
     </style>
 </head>
 <body>
+{% if messages %}
+{% for item in messages %}
+<div class="alert alert-success" role="alert">{{ item }}</div>
+{% endfor %}
+{% endif %}
 <nav class="navbar navbar-expand-sm">
     <div class="container-fluid">
         <ul class="navbar-nav">

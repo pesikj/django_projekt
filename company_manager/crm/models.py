@@ -51,3 +51,14 @@ class Opportunity(models.Model):
     description = models.TextField(null=True, blank=True)
     status = models.CharField(max_length=2, default="1", choices=status_choices)
     value = models.DecimalField(max_digits=10, decimal_places=2, null=True)
+
+class Employee(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    department = models.CharField(max_length=100, blank=True, null=True)
+
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+@receiver(post_save, sender=User)
+def create_user_profile(sender, instance, created, **kwargs):
+    if created:
+        Employee.objects.create(user=instance)
