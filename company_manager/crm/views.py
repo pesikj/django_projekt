@@ -2,6 +2,7 @@ from django.views.generic import CreateView, ListView, TemplateView, UpdateView
 import crm.models as models
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
+from django.contrib.messages.views import SuccessMessageMixin
 
 class IndexView(TemplateView):
     template_name = "index.html"
@@ -36,9 +37,9 @@ class OpportunityUpdateView(PermissionRequiredMixin, UpdateView):
     template_name = "opportunity/update_opportunity.html"
     fields = ["company", "sales_manager", "description", "status", "value"]
     success_url = reverse_lazy("index")
-from django.contrib.messages.views import SuccessMessageMixin
+
 class EmployeeUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
-    fields = ["department"]
+    fields = ["department", "phone_number", "office_number", "manager"]
     template_name = "employee/update_employee.html"
     success_url = reverse_lazy("index")
     success_message = "Data was updated successfully."

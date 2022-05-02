@@ -8,5 +8,5 @@ urlpatterns = [
     path("company/list", views.CompanyListView.as_view(), name="company_list"),
     path("opportunity/update/<int:pk>", views.OpportunityUpdateView.as_view(), name="opportunity_update"),
     path("employee/", views.EmployeeUpdateView.as_view(), name="employee_update"),
-path("company/list", views.CompanyListView.as_view(), name="company_list"),
+    path("opportunity/list", views.CompanyListView.as_view(), name="company_list"),
 ]
