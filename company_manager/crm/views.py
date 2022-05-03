@@ -20,7 +20,7 @@ class OpportunityCreateView(PermissionRequiredMixin, CreateView):
     fields = ["company", "sales_manager", "description", "status", "value"]
     success_url = reverse_lazy("index")
 
-class CompanyListView(ListView):
+class CompanyListView(LoginRequiredMixin, ListView):
     model = models.Company
     template_name = "company/list_company.html"
 

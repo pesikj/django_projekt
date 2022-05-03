@@ -28,6 +28,9 @@ class Company(models.Model):
     identification_number = models.CharField(max_length=100)
     address = models.ForeignKey("Address", on_delete=models.SET_NULL, null=True)
 
+    def __str__(self):
+        return self.name
+
 class Contact(models.Model):
     primary_company = models.ForeignKey(Company, on_delete=models.SET_NULL, null=True)
     first_name = models.CharField(max_length=100)
@@ -47,10 +50,10 @@ class Opportunity(models.Model):
 
     company = models.ForeignKey(Company, on_delete=models.RESTRICT)
     sales_manager = models.ForeignKey(User, on_delete=models.RESTRICT)
-    primary_contact = models.ForeignKey(Contact, on_delete=models.SET_NULL, null=True)
+    primary_contact = models.ForeignKey(Contact, on_delete=models.SET_NULL, null=True, blank=True)
     description = models.TextField(null=True, blank=True)
     status = models.CharField(max_length=2, default="1", choices=status_choices)
-    value = models.DecimalField(max_digits=10, decimal_places=2, null=True)
+    value = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
 
 class Employee(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
