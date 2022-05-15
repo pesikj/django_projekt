@@ -141,6 +141,10 @@ LANGUAGES = [
     ["en", "English"]
 ]
 
+CSRF_TRUSTED_ORIGINS = [
+    "https://company-manager-jirka.herokuapp.com"
+]
+
 import django_heroku
 
 django_heroku.settings(locals())
