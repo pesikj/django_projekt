@@ -9,7 +9,7 @@ class CompanyAdmin(admin.ModelAdmin):
     search_fields = ["name", "email", "identification_number", "opportunity__description"]
 
 class OpportunityAdmin(admin.ModelAdmin):
-    list_display = ["status", "value"]
+    list_display = ["status", "value", "company"]
     list_filter = ["status"]
     search_fields = ["description"]
 admin.site.register(models.Opportunity, OpportunityAdmin)
